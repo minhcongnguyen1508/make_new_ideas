@@ -1,0 +1,25 @@
+.form-inline {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    border: black 1px solid;
+    border-radius: 5px;
+}
+
+.suggestions {
+    overflow: scroll;
+    max-height: 300px;
+    margin-top: 15px;
+}
+
+.dropdown-menu {
+    /* width: 300px !important; */
+    margin-left: 20px !important;
+    padding: 15px 15px 12px 15px !important;
+}
+
+/* link ở ô tìm kiếm để đến story*/
+.search-link {
+    color: black;
+    text-decoration: none !important;
+}

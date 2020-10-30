@@ -10,7 +10,7 @@
 			<ul class="navbar-nav ml-auto d-flex align-items-center">
 
 				<li class="nav-item-l-10 dropleft">
-					<div class="nav-item dropleft">
+					<div class="nav-item dropleft"> 
 						<a class="nav-link" href="#" style="color: gray;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							<svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   							<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
@@ -18,9 +18,16 @@
 							</svg>
 						</a>
 						<div class="dropdown-menu" style="padding-left: 8px; padding-right: 8px;">
-							<form class="form-inline">
+							<!-- <form class="form-inline">
 								<input class="form-control form-control-sm"  style="border: none;" type="text" placeholder="Search Medium" aria-label="Search">
-							</form>
+							</form> -->
+							<div class="form-inline">
+								<input class="form-control form-control-sm" id="search" style="border: none;" type="text" placeholder="Search Medium" aria-label="Search">
+							</div>
+
+							<div class="suggestions" stype="background:#0000">
+								
+							</div>
 						</div>
 					</div>
 				</li>
@@ -70,3 +77,12 @@
 	</div>
 </nav>
 <!-- End Navbar -->
+
+<!-- <script>
+$(document).ready(function(){
+	$("button").click(function(){
+		console.log("hello trang from test button click");
+	})
+});
+
+</script> -->

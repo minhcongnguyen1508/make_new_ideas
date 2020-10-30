@@ -19,18 +19,18 @@ HEADER
 					<p class="text-uppercase font-weight-bold">
 						<a class="text-danger" href="./category.html">Stories</a>
 					</p>
-					<h1 class="display-4 secondfont mb-3 font-weight-bold">Sterling could jump 8% if Brexit deal gets approved by UK Parliament</h1>
+					<h1 class="display-4 secondfont mb-3 font-weight-bold">{{ $story[0]->title }}</h1>
 					<p class="mb-3">
-						Analysts told CNBC that the currency could hit anywhere between $1.35-$1.40 if the deal gets passed through the U.K. parliament.
+						{{ $story[0]->slug }}
 					</p>
 					<div class="d-flex align-items-center">
-						<img class="rounded-circle" src="assets/img/demo/avatar2.jpg" width="70">
-						<small class="ml-2">Jane Seymour <span class="text-muted d-block">A few hours ago &middot; 5 min. read</span>
+						<img class="rounded-circle" src="/assets/img/demo/avatar2.jpg" width="70">
+						<small class="ml-2">{{ $name[0]->username}} <span class="text-muted d-block">A few hours ago &middot; 5 min. read</span>
 						</small>
 					</div>
 				</div>
 				<div class="col-md-6 pr-0">
-					<img src="./assets/img/demo/intro.jpg">
+					<img src="/assets/img/demo/1.jpg">
 				</div>
 			</div>
 		</div>

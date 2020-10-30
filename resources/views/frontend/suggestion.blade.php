@@ -26,7 +26,7 @@
 					<img height="80" src="./assets/img/demo/blog4.jpg">
 					<div class="pl-3">
 						<h2 class="mb-2 h6 font-weight-bold">
-							<a class="text-dark" href="{{ route('story') }}">Nasa's IceSat space laser makes height maps of Earth</a>
+							<a class="text-dark" href="{{ route('story',1) }}">Nasa's IceSat space laser makes height maps of Earth</a>
 						</h2>
 						<div class="card-text text-muted small">
 							Jake Bittle in LOVE/HATE
@@ -38,7 +38,7 @@
 					<img height="80" src="./assets/img/demo/blog5.jpg">
 					<div class="pl-3">
 						<h2 class="mb-2 h6 font-weight-bold">
-							<a class="text-dark" href="{{ route('story') }}">Underwater museum brings hope to Lake Titicaca</a>
+							<a class="text-dark" href="{{ route('story',1) }}">Underwater museum brings hope to Lake Titicaca</a>
 						</h2>
 						<div class="card-text text-muted small">
 							Jake Bittle in LOVE/HATE
@@ -50,7 +50,7 @@
 					<img height="80" src="./assets/img/demo/blog6.jpg">
 					<div class="pl-3">
 						<h2 class="mb-2 h6 font-weight-bold">
-							<a class="text-dark" href="{{ route('story') }}">Sun-skimming probe starts calling home</a>
+							<a class="text-dark" href="{{ route('story',1) }}">Sun-skimming probe starts calling home</a>
 						</h2>
 						<div class="card-text text-muted small">
 							Jake Bittle in LOVE/HATE
