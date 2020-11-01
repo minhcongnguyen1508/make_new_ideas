@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', 'Controller@index');
 Route::get('/', 'Frontend\HomepageController@index')->name('homepage');
 
-Route::get('/story', 'Frontend\StoryController@index')->name('story');
+Route::get('/story/{id}', 'Frontend\StoryController@index')->name('story');
 
 Route::get('/signin', 'Auth\AuthController@signin')->name('signin');
 
@@ -28,3 +28,6 @@ Route::post('post-register', 'Auth\AuthController@postRegister');
 
 Route::get('home', 'Auth\AuthController@home');
 Route::get('logout', 'Auth\AuthController@logout');
+
+
+Route::get('livesearch', 'LiveSearch@action')->name('live_search');
