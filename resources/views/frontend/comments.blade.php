@@ -42,11 +42,12 @@
 
 <div class="container bootdey">
   <div class="col-md-12 bootstrap snippets">
-    <form id="form-submit" action="{{route('comment.create')}}" method="POST" enctype="multipart/form-data">
+    <form id="form-submit" action="{{route('comment.create', ['id' => $story[0]->id])}}" method="POST" enctype="multipart/form-data">
+      {{ csrf_field() }}
       <div class="panel-body">
-        <textarea class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
+        <textarea name="content" id="comment" class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
         <div class="mar-top  clearfix">
-          <button class="btn btn-sm btn-primary pull-right mar-bottom" type="submit">
+          <button id="cmt-submit" class="btn btn-sm btn-primary pull-right mar-bottom" type="submit" disabled>
             <i class="fa fa-pencil fa-fw"></i> Comments
           </button>
           <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
@@ -60,7 +61,7 @@
           <!--===================================================-->
           <div class="media-block">
             <div class="media-block">
-            @foreach($comments as $cmt)
+              @foreach($comments as $cmt)
               <a class="media-left" href="#"><img class="rounded-circle" src="assets/img/demo/avatar2.jpg" width="50"></a>
               <div class="media-body">
                 <div class="mar-btm">
@@ -73,7 +74,7 @@
                     <a class="btn btn-sm btn-default btn-hover-success active" href="#"><i class="fa fa-thumbs-up"></i></a>
                     <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>
                   </div>
-                  <button type="submit" id="btn-submit" class="btn btn-sm btn-default btn-hover-primary"> Comments </button>
+                  <button type="submit" class="btn btn-sm btn-default btn-hover-primary"> Comments </button>
                 </div>
                 <hr>
               </div>
@@ -84,3 +85,15 @@
         </div>
   </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $('textarea#comment').on('keyup', function() {
+      if ($('#form-submit textarea#comment').val() == '') {
+        $("#cmt-submit").attr("disabled", true);
+      } else {
+        $("#cmt-submit").attr("disabled", false);
+      }
+    })
+  });
+</script>
