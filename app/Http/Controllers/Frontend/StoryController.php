@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Comments;
 use DB;
 
 class StoryController extends Controller
@@ -16,6 +17,9 @@ class StoryController extends Controller
     $name = DB::table('users')->leftjoin('posts', 'users.id','=', 'posts.user_id')
             ->where('posts.id', $req->id)
             ->get();
-    return view('frontend.story')->with(['story'=> $story, 'name'=>$name]);
+    
+    $comments = Comments::where('post_id', $req->id)->get();
+
+    return view('frontend.story')->with(['story'=> $story, 'name' => $name, 'comments' => $comments]);
   }
 }
