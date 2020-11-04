@@ -34,3 +34,7 @@ Route::get('logout', 'Auth\AuthController@logout');
 
 Route::get('livesearch', 'LiveSearch@action')->name('live_search');
 
+Route::get('like/{post_id}', 'Frontend\StoryController@like');
+Route::get('unlike/{post_id}', 'Frontend\StoryController@unLike');
+Route::get('count-like/{post_id}', 'Frontend\StoryController@countLike');
+Route::get('get-status-like/{post_id}', 'Frontend\StoryController@statusLike');
