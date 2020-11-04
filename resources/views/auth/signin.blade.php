@@ -77,7 +77,7 @@
 							<i class="fa fa-twitter"></i>
 						</a>
 
-						<a href="#" class="login100-social-item bg3">
+						<a href="{{ URL::to('auth/google') }}" class="login100-social-item bg3">
 							<i class="fa fa-google"></i>
 						</a>
 					</div>

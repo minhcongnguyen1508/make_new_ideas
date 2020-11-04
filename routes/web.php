@@ -34,3 +34,5 @@ Route::get('logout', 'Auth\AuthController@logout');
 
 Route::get('livesearch', 'LiveSearch@action')->name('live_search');
 
+Route::get('/auth/{provider}', 'Auth\SocialAuthController@redirectToProvider');
+Route::get('/auth/{provide}/callback', 'Auth\SocialAuthController@handleProviderCallback');
