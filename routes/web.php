@@ -34,3 +34,6 @@ Route::get('logout', 'Auth\AuthController@logout');
 
 Route::get('livesearch', 'LiveSearch@action')->name('live_search');
 
+Route::get('create-story', 'Frontend\StoryController@showCreateStory');
+Route::post('post-story','Frontend\StoryController@createStory');
+
