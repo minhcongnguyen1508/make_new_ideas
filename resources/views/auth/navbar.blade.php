@@ -58,7 +58,7 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="#">Profile</a>
-						<a class="dropdown-item" href="#">Story</a>
+						<a class="dropdown-item" href="{{URL::to('create-story')}}">Create Story</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="{{url('logout')}}">Sign Out</a>
 						{{ csrf_field() }}

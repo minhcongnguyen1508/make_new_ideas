@@ -40,3 +40,6 @@ Route::get('count-like/{post_id}', 'Frontend\StoryController@countLike');
 Route::get('get-status-like/{post_id}', 'Frontend\StoryController@statusLike');
 Route::get('/auth/{provider}', 'Auth\SocialAuthController@redirectToProvider');
 Route::get('/auth/{provide}/callback', 'Auth\SocialAuthController@handleProviderCallback');
+Route::get('create-story', 'Frontend\StoryController@showCreateStory');
+Route::post('post-story','Frontend\StoryController@createStory');
+
