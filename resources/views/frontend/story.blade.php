@@ -24,7 +24,11 @@ HEADER
 						{{ $story[0]->slug }}
 					</p>
 					<div class="d-flex align-items-center">
-						<img class="rounded-circle" src="/assets/img/demo/avatar2.jpg" width="70">
+						@if($name[0]->avatar)
+						<img class="rounded-circle" src="{{asset('avatars/' . Auth::user()->avatar)}}" width="70">
+						@else
+						<img class="rounded-circle" src="{{asset('avatars/avatar_none.png')}}" width="70">
+						@endif
 						<small class="ml-2">{{ $name[0]->username}} <span class="text-muted d-block">A few hours ago &middot; 5 min. read</span>
 						</small>
 					</div>
@@ -35,7 +39,7 @@ HEADER
 			</div>
 		</div>
 	</div>
-</div>	
+</div>
 <!-- End Header -->
 
 <!--------------------------------------

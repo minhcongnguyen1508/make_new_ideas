@@ -62,7 +62,12 @@
           <div class="media-block">
             <div class="media-block">
               @foreach($comments as $cmt)
-              <a class="media-left" href="#"><img class="rounded-circle" src="assets/img/demo/avatar2.jpg" width="50"></a>
+
+              @if($cmt->user->avatar)
+              <a class="media-left" href="#"><img class="rounded-circle" src="{{asset('avatars/' . $cmt->user->avatar)}}" width="50"></a>
+              @else
+              <a class="media-left" href="#"><img class="rounded-circle" src="{{asset('avatars/avatar_none.png')}}" width="50"></a>
+              @endif
               <div class="media-body">
                 <div class="mar-btm">
                   <small class=""> <a href="#">{{$cmt->user->username}}</a> <span class="text-muted d-block">{{$cmt->created_at}}</span>

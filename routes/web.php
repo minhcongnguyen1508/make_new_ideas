@@ -43,3 +43,6 @@ Route::get('/auth/{provide}/callback', 'Auth\SocialAuthController@handleProvider
 Route::get('create-story', 'Frontend\StoryController@showCreateStory');
 Route::post('post-story','Frontend\StoryController@createStory');
 
+Route::get('/profile/{id}', 'Frontend\UserController@show')->name('user.show');
+Route::post('/profile/{id}', 'Frontend\UserController@edit')->name('user.edit');
+
