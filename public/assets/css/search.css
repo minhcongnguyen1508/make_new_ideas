@@ -23,3 +23,73 @@
     color: black;
     text-decoration: none !important;
 }
+
+/* reading list css */
+.reading-list {
+    font-size: 28px;
+    padding-bottom: 20px;
+    margin-top: 30px;
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 550;
+}
+
+.rl-item {
+    padding: 20px 0px;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    max-height: 1000px;
+    opacity: 1;
+    flex: 1 1 auto;
+    justify-content: space-between;
+    flex-direction: row;
+    max-width: 560px;
+    display: block;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.rl-it-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(41, 41, 41, 1);
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 20px;
+}
+
+.rl-desc {
+    margin: 4px 0px 12px;
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgba(117, 117, 117, 1);
+    line-height: 20px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.rl-aut-name {
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: rgba(26, 137, 23, 1);
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    line-height: 20px;
+    font-weight: 400;
+}
+
+.item-bt {
+    border: none;
+    padding: 0;
+    display: flex;
+}
+
+.rl-it-remove {
+}
+
+.rl-it-remove h4 {
+    padding-left: 5px;
+    font-size: 13px;
+    font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: rgba(117, 117, 117, 1);
+    line-height: 20px;
+    font-weight: 400;
+    margin-top: 3px;
+}

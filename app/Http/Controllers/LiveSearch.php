@@ -23,11 +23,11 @@ class LiveSearch extends Controller
             
             if($total_row > 0){
                 foreach($data as $row){
-                    $output .= '<a href="" class="search-link">'.$row->title.'</a><hr>';
+                    $output .= '<a href="{{route(\'story\',1)}}" class="search-link">'.$row->title.'</a><hr>';
                 } 
                 
             } else {
-                $output = '<p> No data found ahihi</p>';
+                $output = '<p> No data found. </p>';
             }
 
          
