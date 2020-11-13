@@ -30,4 +30,8 @@ class Writer extends Model
     {
         return $this->belongsTo(User::class, 'admin_id', 'id');
     }
+    public function post()
+    {
+        return $this->hasMany(Post::class, 'user_id', 'user_id');
+    }
 }

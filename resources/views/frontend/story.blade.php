@@ -31,6 +31,12 @@ HEADER
 						@endif
 						<small class="ml-2">{{ $name[0]->username}} <span class="text-muted d-block">A few hours ago &middot; 5 min. read</span>
 						</small>
+						<a data-href="{{url('/follow/'.$name[0]->user_id)}}" data-writer="{{$name[0]->user_id}}" id="follow" class="btn btn-outline-primary">
+							Follow
+						</a>
+						<a data-href="{{url('/unfollow/'.$name[0]->user_id)}}" id="unfollow" class="btn btn-outline-danger">
+							Unfollow
+						</a>
 					</div>
 				</div>
 				<div class="col-md-6 pr-0">
@@ -41,7 +47,47 @@ HEADER
 	</div>
 </div>
 <!-- End Header -->
-
+<script>
+	var write_id = $("#follow").data('writer');
+	$( document ).ready(function() {
+		
+		$.ajax({
+			url: "./isfollowed/"+write_id,
+		}).done(function(data ) {
+			console.log(data)
+			if(data > 0){
+				$("#follow").attr('hidden','hidden');
+			}
+			else{
+				$("#unfollow").attr('hidden','hidden');
+			}
+		});
+	});
+	$('body').on("click","#follow",function(){
+		$.ajax({
+			url: "./follow/"+write_id,
+			type:"POST",
+			data:{
+				write_id:write_id,
+			}
+        }).done(function() {
+			$("#follow").attr('hidden','hidden');
+			$("#unfollow").removeAttr('hidden');
+		});
+	});
+	$('body').on("click","#unfollow",function(){
+		$.ajax({
+			url: "./unfollow/"+write_id,
+			type:"DELETE",
+			data:{
+				write_id:write_id,
+			}
+        }).done(function() {
+			$("#unfollow").attr('hidden','hidden');
+			$("#follow").removeAttr('hidden');
+		});
+	});
+</script>
 <!--------------------------------------
 MAIN
 --------------------------------------->

@@ -19,7 +19,7 @@ class UserController extends Controller
     }
 
     public function edit(ProfileEditRequest $request, $id){
-        $user = User::find($id);       
+        $user = User::find($id);
         $user->username = $request->username;
         $user->email = $request->email;
 
