@@ -49,4 +49,3 @@ Route::post('/follow/{writer_id}', 'Frontend\FollowController@follow')->name('fo
 Route::delete('/unfollow/{writer_id}', 'Frontend\FollowController@unfollow')->name('unfollow');
 Route::get('/isfollowed/{writer_id}', 'Frontend\FollowController@isFollowed')->name('isfollowed');
 
-

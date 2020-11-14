@@ -38,7 +38,7 @@ MAIN
             </div>
         </div>
     </div>
-    @include('ckfinder::setup')
+
 @include('layouts/footer')
 <script src={{ url('ckeditor/ckeditor.js') }}></script>
     <script>

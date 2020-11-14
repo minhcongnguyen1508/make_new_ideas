@@ -7,7 +7,6 @@
 
 		<div class="navbar-collapse collapse" style="">
 			<ul class="navbar-nav ml-auto d-flex align-items-center">
-
 				<li class="nav-item-l-10 dropleft">
 					<div class="nav-item dropleft">
 						<a class="nav-link" href="#" style="color: gray;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,15 +32,15 @@
 
 				@if(Auth::check())
 
-				<li class="nav-itemm-l-10" style="padding: 12px;">
-					<a href="#" style="color: gray;">
+				<li class="show nav-itemm-l-10" style="padding: 12px;">
+					<a class="btn show-notification"  style="color: gray;" >
 						<svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-bell" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 							<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2z" />
 							<path fill-rule="evenodd" d="M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
 						</svg>
+						<span class="count-notification text-danger">1</span>
 					</a>
 				</li>
-
 				<li class="nav-itemm-l-10" style="padding: 12px;">
 					<a href="#" style="color: gray;">
 						<svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-bookmarks" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -79,8 +78,71 @@
 		</div>
 	</div>
 </nav>
+<div hidden = "hidden" id="notification" style="border-radius: 10px;position: fixed; right: 20px; width:30%; border: 1px solid black;z-index: 2000; background-color: white">
+	<div class="container" style="">
+		<div class="row.col-12" style="position: sticky;">
+			<h5 class="text-center">Notification</h5>
+			<hr>
+		</div>
+		<div class="row.col-12" style="overflow-y: scroll;height: 400px;">
+			<div class="container notification-detail">
+				@unless (empty(current_user()->notifications))
+				@foreach (current_user()->notifications as $notification)
+					<div class="row.col-12">
+						<a href="{{ $notification->data['link']}}">
+							<h6>{{ $notification->data['title']}}</h6>
+							<i>{{$notification->created_at}}</i>
+						</a>
+						<hr>
+					</div>
+				@endforeach
+			@endif
+			</div>
+		</div>
+	</div>
+</div>
 <!-- End Navbar -->
 
+<script>
+	$('body').on('click',".show-notification",function(event){
+		console.log(event)
+		if ($('#notification').attr('hidden')=='hidden') {
+			$('#notification').removeAttr("hidden");
+		}
+		else{
+			$('#notification').attr("hidden",'hidden');
+		}
+	});
+	Pusher.logToConsole = true;
+
+    var pusher = new Pusher('548a716aa93f339fd904', {
+      	cluster: 'ap1',
+    	encrypted: true
+    });
+	
+    var channel = pusher.subscribe('notification-channel');
+	
+    channel.bind('notification-event', function(data) {
+		var following_writer_ids_raw = <?php echo following_writer_ids() ?>;
+		var following_writer_ids = []
+		following_writer_ids_raw.forEach(element => {
+			following_writer_ids.push(element['writer_id']);
+		});
+		console.log(following_writer_ids);
+		if (following_writer_ids.indexOf(data.writer_id)>=0) {
+			console.log(data.created_at);
+			$('.notification-detail').prepend(`
+			<div class="row.col-12">
+				<a href="${data.link}">
+					<h6>${data.title}</h6>
+					<i>${data.created_at}</i>
+				</a>
+				<hr>
+			</div>
+		`);
+		}
+    });
+</script>
 <!-- <script>
 $(document).ready(function(){
 	$("button").click(function(){

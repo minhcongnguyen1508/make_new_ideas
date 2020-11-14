@@ -21,6 +21,6 @@ class FollowController extends Controller
     }
     public function isFollowed(Request $request)
     {
-        return count(DB::table('follow')->where(['user_id'=>Auth::id(), 'writer_id' => $request->writer_id])->get());
+        return count(DB::table('follows')->where(['user_id'=>Auth::id(), 'writer_id' => intval($request->writer_id)])->get());
     }
 }

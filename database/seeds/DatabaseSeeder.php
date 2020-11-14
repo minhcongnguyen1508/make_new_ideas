@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -17,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(WriterTableSeeder::class);
         $this->call(PostTableSeeder::class);
         $this->call(TagTableSeeder::class);
+        $this->call(NotificationSeeder::class);
     }
 }

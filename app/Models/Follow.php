@@ -12,10 +12,12 @@ class Follow extends Model
     ];
     public function follower()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsToMany(self::class, 'followers', 'writer_id', 'user_id')
+                    ->withTimestamps();
     }
     public function writer()
     {
-        return $this->belongsTo(User::class, 'writer_id', 'id');
+        return $this->belongsToMany(self::class, 'followers', 'user_id', 'writer_id')
+                    ->withTimestamps();
     }
 }
