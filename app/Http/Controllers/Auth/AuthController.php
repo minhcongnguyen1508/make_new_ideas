@@ -10,7 +10,8 @@ Use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Session;
-
+use Illuminate\Broadcasting\PrivateChannel;
+use Illuminate\Broadcasting\Channel;
 class AuthController extends Controller
 {
     public function signin()

@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Notifications\Notifiable;
+
 
 class User extends Model implements AuthenticatableContract
 {
     use Authenticatable;
+    use Notifiable;
 
     const ROLE_USER = 1;
 
