@@ -54,4 +54,8 @@ class User extends Model implements AuthenticatableContract
     {
         return $this->hasMany(Like::class);
     }
+
+    public function reading_list() {
+        return $this->hasMany(ReadingList::class);
+    }
 }

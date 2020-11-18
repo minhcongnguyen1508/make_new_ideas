@@ -76,4 +76,9 @@ class Post extends Model
     {
         return $this->hasMany(Like::class);
     }
+
+    public function reading_list()
+    {
+        return $this->hasMany(ReadingList::class);
+    }
 }

@@ -43,3 +43,9 @@ Route::get('/auth/{provide}/callback', 'Auth\SocialAuthController@handleProvider
 Route::get('create-story', 'Frontend\StoryController@showCreateStory');
 Route::post('post-story','Frontend\StoryController@createStory');
 
+Route::get('/reading-list','Frontend\ReadingListController@index')->name('reading-list');
+Route::get('status-save/{post_id}','Frontend\ReadingListController@statusSave');
+Route::get('save/{post_id}', 'Frontend\ReadingListController@save');
+Route::get('unsave/{post_id}', 'Frontend\ReadingListController@unsave');
+
+
