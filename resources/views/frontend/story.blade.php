@@ -31,7 +31,7 @@ HEADER
 						@endif
 						<small class="ml-2">{{ $name[0]->username}} <span class="text-muted d-block">A few hours ago &middot; 5 min. read</span>
 						</small>
-<<<<<<< HEAD
+
 						@if ($name[0]->user_id != current_user()->id)
 							<a data-href="{{url('/follow/'.$name[0]->user_id)}}" data-writer="{{$name[0]->user_id}}" id="follow" class="btn btn-outline-primary">
 								Follow
@@ -40,7 +40,6 @@ HEADER
 								Unfollow
 							</a>
 						@endif
-=======
 						
 							<a id="save" data-type="save" class="btn" style="color: gray; padding: 10px; margin-left: 50px">
 
@@ -49,7 +48,6 @@ HEADER
 								</svg>
 							</a>
 
->>>>>>> readinglist
 					</div>
 
 				</div>
@@ -61,7 +59,7 @@ HEADER
 	</div>
 </div>
 <!-- End Header -->
-<<<<<<< HEAD
+
 <script>
 	var writer_id = $("#follow").data('writer');
 	$( document ).ready(function() {
@@ -106,11 +104,7 @@ HEADER
 		});
 	});
 </script>
-=======
 
-
-
->>>>>>> readinglist
 <!--------------------------------------
 MAIN
 --------------------------------------->
@@ -160,10 +154,6 @@ FOOTER
 --------------------------------------->
 @include('layouts.footer')
 
-<<<<<<< HEAD
-@endsection
-=======
 @endsection
 
 
->>>>>>> readinglist
