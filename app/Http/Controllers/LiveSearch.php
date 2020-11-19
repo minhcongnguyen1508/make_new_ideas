@@ -23,7 +23,8 @@ class LiveSearch extends Controller
             
             if($total_row > 0){
                 foreach($data as $row){
-                    $output .= '<a href="{{route(\'story\',1)}}" class="search-link">'.$row->title.'</a><hr>';
+                    $output .= '<a rel="stylesheet" href="/story/'.$row->id.'" class="search-link">'.$row->title.'</a><hr>';
+                    
                 } 
                 
             } else {
@@ -38,6 +39,7 @@ class LiveSearch extends Controller
             );
 
             echo json_encode($data);
+           
         }
 
         

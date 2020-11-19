@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\ReadingList;
 use Illuminate\Support\Facades\Auth;
 
+use Redirect;
+
 
 class ReadingListController extends Controller
 {
@@ -21,22 +23,31 @@ class ReadingListController extends Controller
                     ->get();
                  
 
-        return view('frontend.reading-list')->with('story', $story);
+        if(Auth::check()){
+            return view('frontend.reading-list')->with('story', $story);
+        } else {
+            return Redirect::to("/signin");
+        }
     }
 
     public function save($post_id){
         ReadingList::create(['user_id'=>Auth::id(), 'post_id'=>$post_id]);
-        return true;
+        
     }
 
     public function unsave($post_id){
         DB::table('reading_lists')->where(['post_id'=>$post_id,'user_id'=>Auth::id()])->delete();
-        return true;
+       
     }
 
     public function statusSave($post_id){
-        if(count(DB::table('reading_lists')->where(['post_id'=>$post_id,'user_id'=>Auth::id()])->get()) >= 1){
+        if(count(DB::table('reading_lists')->where(['post_id'=>$post_id,'user_id'=>Auth::id()])->get()) == 1){
             return 'saved';
         }
+    }
+
+    public function remove($post_id){
+        DB::table('reading_lists')->where(['post_id'=>$post_id, 'user_id'=>Auth::id()])->delete();
+        
     }
 }

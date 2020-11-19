@@ -24,6 +24,9 @@
 <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 @yield('css')
 
+<!-- icon library  -->
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
 </head>
 
 <body>

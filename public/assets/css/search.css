@@ -80,8 +80,8 @@ a:link {
     padding: 0;
     display: flex;
 }
-
-.rl-it-remove {
+button:focus {
+    outline: 0;
 }
 
 .rl-it-remove h4 {

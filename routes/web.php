@@ -43,9 +43,19 @@ Route::get('/auth/{provide}/callback', 'Auth\SocialAuthController@handleProvider
 Route::get('create-story', 'Frontend\StoryController@showCreateStory');
 Route::post('post-story','Frontend\StoryController@createStory');
 
+
 Route::get('/profile/{id}', 'Frontend\UserController@show')->name('user.show');
 Route::post('/profile/{id}', 'Frontend\UserController@edit')->name('user.edit');
 Route::post('/follow/{writer_id}', 'Frontend\FollowController@follow')->name('follow');
 Route::delete('/unfollow/{writer_id}', 'Frontend\FollowController@unfollow')->name('unfollow');
 Route::get('/isfollowed/{writer_id}', 'Frontend\FollowController@isFollowed')->name('isfollowed');
+
+Route::get('/reading-list','Frontend\ReadingListController@index')->name('reading-list');
+Route::get('status-save/{post_id}','Frontend\ReadingListController@statusSave');
+Route::get('save/{post_id}', 'Frontend\ReadingListController@save');
+Route::get('unsave/{post_id}', 'Frontend\ReadingListController@unsave');
+
+Route::get('remove/{post_id}', 'Frontend\ReadingListController@remove');
+
+
 
