@@ -48,4 +48,6 @@ Route::get('status-save/{post_id}','Frontend\ReadingListController@statusSave');
 Route::get('save/{post_id}', 'Frontend\ReadingListController@save');
 Route::get('unsave/{post_id}', 'Frontend\ReadingListController@unsave');
 
+Route::get('remove/{post_id}', 'Frontend\ReadingListController@remove');
+
 

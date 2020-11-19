@@ -28,8 +28,6 @@ HEADER
 						<small class="ml-2">{{ $name[0]->username}} <span class="text-muted d-block">A few hours ago &middot; 5 min. read</span>
 						</small>
 						
-						
-							
 							<a id="save" data-type="save" class="btn" style="color: gray; padding: 10px; margin-left: 50px">
 
 								<svg class="svg-icon" viewBox="0 0 20 20" width="1.7em" height="1.7em" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -63,11 +61,12 @@ MAIN
 <script>
 	var post_id = window.location.pathname.split("/").slice(-1)[0]
 	$('body').ready(function(){
+		
 		$.ajax({
-			url: "./status-save/" + $post_id		
+			url: "./status-save/"+ post_id,		
 		}).done(function(data){
+			console.log('hello trang');
 			if(data == 'saved'){
-				console.log('data=saved');
 				$('#save').data( "type", "unsave" );
 				$('#save').css("color", "blue")
 			}

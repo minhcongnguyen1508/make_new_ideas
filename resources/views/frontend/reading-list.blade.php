@@ -27,8 +27,8 @@ MAIN
        
         <div class="rl-list-posts">
             @foreach($story as $item)
-            <div class="rl-item">
-                <a href="">
+            <div class="rl-item" id="post{{$item->id}}">
+                <a href="{{route('story', $item->post_id)}}">
                     <h2 class="rl-it-title">{{$item->title}}</h2>
                     <h3 class="rl-desc">{{$item->slug}}</h3>
                 </a>
@@ -48,7 +48,7 @@ MAIN
                                 1.77a.5.5 0 0 1 0-.7z">
                             </path>
                         </svg>
-                        <div class="rl-it-remove"><h4>Remove</h4></div>
+                        <div class="rl-it-remove"><h4 class="remove" id="{{$item->post_id}}">Remove</h4></div>
                     </button>
                     
                 </div>
@@ -63,6 +63,18 @@ MAIN
 
 <!-- End Main -->
 
+<script>
+    $('body').on('click', '.remove', function(){
+        var id = $(this).attr('id');
+        $.ajax({
+            
+            url: "./remove/" + id,
+
+        }).done(function(){
+            location.reload(true);
+        });
+    });
+</script>
 
 
 
