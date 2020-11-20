@@ -73,7 +73,7 @@ class StoryController extends Controller
                         'slug' => str_replace(" ","-",strtolower($data['title'])),
                         'content' => $data['content'],
                         'category_id' => $data['category'],
-                        'thumbnail' => '/images/'.$imageName,
+                        'thumbnail' => '/public/images/'.$imageName,
                         'user_id' => Auth::id()
                     ]);
         $data_notifi_title = "Writer ".Auth::user()->username." vừa mới có bài viết mới!";

@@ -3,18 +3,7 @@
 
 		<div class="col-md-12 col-lg-10">
 			<article class="article-post">
-				<p class="text-justify">
-					Holy grail funding non-disclosure agreement advisor ramen bootstrapping ecosystem. Beta crowdfunding iteration assets business plan paradigm shift stealth mass market seed money rockstar niche market marketing buzz market.
-				</p>
-				<p class="text-justify">
-					Burn rate release facebook termsheet equity technology. Interaction design rockstar network effects handshake creative startup direct mailing. Technology influencer direct mailing deployment return on investment seed round.
-				</p>
-				<p class="text-justify">
-					Termsheet business model canvas user experience churn rate low hanging fruit backing iteration buyer seed money. Virality release launch party channels validation learning curve paradigm shift hypotheses conversion. Stealth leverage freemium venture startup business-to-business accelerator market.
-				</p>
-				<p class="text-justify">
-					Freemium non-disclosure agreement lean startup bootstrapping holy grail ramen MVP iteration accelerator. Strategy market ramen leverage paradigm shift seed round entrepreneur crowdfunding social proof angel investor partner network virality.
-				</p>
+				{!! $story[0]->content !!}
 			</article>
 			<div class="border p-5 bg-lightblue">
 				<div class="row justify-content-between">
