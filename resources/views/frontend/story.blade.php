@@ -33,10 +33,10 @@ HEADER
 						</small>
 
 						@if ($name[0]->user_id != current_user()->id)
-							<a data-href="{{url('/follow/'.$name[0]->user_id)}}" data-writer="{{$name[0]->user_id}}" id="follow" class="btn btn-outline-primary">
+							<a data-href="{{url('/follow/'.$name[0]->user_id)}}" data-writer="{{$name[0]->user_id}}" id="follow" style="margin-left: 10px" class="btn btn-outline-primary">
 								Follow
 							</a>
-							<a data-href="{{url('/unfollow/'.$name[0]->user_id)}}" id="unfollow" class="btn btn-outline-danger">
+							<a data-href="{{url('/unfollow/'.$name[0]->user_id)}}" id="unfollow" class="btn btn-outline-danger" style="margin-left: 10px" >
 								Unfollow
 							</a>
 						@endif
