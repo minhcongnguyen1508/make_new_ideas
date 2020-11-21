@@ -104,7 +104,7 @@
       $.ajax({
         url: "./count_like_cmt/" + cmt_id,
         success: function(data) {
-          $(like).children('i').html(data);
+          $(like).children('i').html(" " + data);
         },
         error: function(msg) {
           console.log(msg)
@@ -131,7 +131,7 @@
       $.ajax({
         url: "./count_unlike_cmt/" + cmt_id,
         success: function(data) {
-          $(unlike).children('i').html(data);
+          $(unlike).children('i').html(" " + data);
         },
         error: function(msg) {}
       });
