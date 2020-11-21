@@ -96,17 +96,7 @@
 </div>
 
 <script>
-  $(document).ready(function() {
-    $('textarea#comment').on('keyup', function() {
-      if ($('textarea#comment').val() == '') {
-        $("#cmt-submit").attr("disabled", true);
-      } else {
-        $("#cmt-submit").attr("disabled", false);
-      }
-    })
-
-  });
-
+  function countLike() {
     $.each($('a.like'), function() {
       var cmt_id = $(this).attr('cmt_id');
       var like = this;
@@ -158,7 +148,18 @@
         error: function(msg) {}
       });
     });
+  }
 
+  $(document).ready(function() {
+    $('textarea#comment').on('keyup', function() {
+      if ($('textarea#comment').val() == '') {
+        $("#cmt-submit").attr("disabled", true);
+      } else {
+        $("#cmt-submit").attr("disabled", false);
+      }
+    });
+    countLike()
+  });
 
   $('body').on('click', 'a.like', function() {
     var cmt_id = $(this).attr('cmt_id');
