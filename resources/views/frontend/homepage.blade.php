@@ -92,7 +92,7 @@ MAIN
 					<img height="120" src="{!! $story->thumbnail !!}">
 				</div>
 			@endforeach
-			{{ $stories->links() }}
+			
 		</div>
 		<div class="col-md-4 pl-4">
             <h5 class="font-weight-bold spanborder"><span>Popular</span></h5>
@@ -110,6 +110,9 @@ MAIN
 				</li>
 				@endforeach
 			</ol>
+		</div>
+		<div class="col-md-8">
+			{{ $stories->links() }}
 		</div>
 	</div>
 </div>
