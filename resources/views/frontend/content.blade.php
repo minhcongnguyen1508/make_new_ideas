@@ -84,6 +84,7 @@
 		}).done(function(data ) {
 			$('#like').children('span').html(data);
 		});
+		
 		$.ajax({
 			url: "./get-status-like/"+post_id,
 		}).done(function(data ) {
@@ -96,6 +97,7 @@
 	});
 	$('body').on('click','#like',function(){
 		var url = './'+$('#like').data('type')+"/"+post_id;
+		
 		$.ajax({
 			url: url,
 			context: document.body

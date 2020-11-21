@@ -20,6 +20,11 @@ Route::get('/', 'Frontend\HomepageController@index')->name('homepage');
 Route::get('/story/{id}', 'Frontend\StoryController@index')->name('story');
 
 Route::post('/comment/{id}', 'Frontend\CommentController@store')->name('comment.create');
+Route::post('like_cmt/{comment_id}', 'Frontend\CommentController@like');
+Route::post('unlike_cmt/{comment_id}', 'Frontend\CommentController@unLike');
+Route::get('count_like_cmt/{comment_id}', 'Frontend\CommentController@countLike');
+Route::get('count_unlike_cmt/{comment_id}', 'Frontend\CommentController@countUnLike');
+Route::get('get_status_like_cmt/{comment_id}', 'Frontend\CommentController@statusLike');
 
 Route::get('/signin', 'Auth\AuthController@signin')->name('signin');
 
