@@ -103,7 +103,8 @@
 
     // function countLike() {
     //   var cmt_id = $(this).attr('cmt_id');
-    //   debugger
+    //   var like = this;
+
     //   $.ajax({
     //     url: "./count_like/" + post_id,
     //   }).done(function(data) {
@@ -115,15 +116,49 @@
     //     success: function(data) {
     //       debugger
     //       if (data == 'liked') {
-    //         $('a.like i').css("color", "#025d45")
-    //       }
-    //       if (data == 'unliked') {
-    //         $('a.unlike i').css("color", "red")
+    //         $(like).css("color", "#025d45")
+    //       } else {
+    //         $(like).css("color", "grey")
     //       }
     //     },
     //     error: function(msg) {}
     //   });
     // }
+
+  });
+
+  $.each($('a.like'), function(){
+    var cmt_id = $(this).attr('cmt_id');
+    var like = this;
+
+		$.ajax({
+        url: "./get_status_like_cmt/" + cmt_id,
+        success: function(data) {
+          if (data == 'liked') {
+            $(like).css("color", "#025d45")
+          } else {
+            $(like).css("color", "grey")
+          }
+        },
+        error: function(msg) {}
+      });	
+  });
+
+  $.each($('a.unlike'), function(){
+    var cmt_id = $(this).attr('cmt_id');
+    var unlike = this;
+
+		$.ajax({
+        url: "./get_status_like_cmt/" + cmt_id,
+        success: function(data) {
+          if (data == 'unliked') {
+            $(unlike).css("color", "#025d45")
+          } else {
+            $(unlike).css("color", "grey")
+          }
+        },
+        error: function(msg) {}
+      });	
   });
 
   $('body').on('click', 'a.like', function() {
