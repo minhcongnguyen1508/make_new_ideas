@@ -16,7 +16,7 @@ MAIN
 					<h2 class="h4 font-weight-bold">
 					<a class="text-dark" href="{{ route('story',$newest_stories[1]->id) }}">{{$newest_stories[1]->title}}</a>
 					</h2>
-					<p class="card-text">
+					<p class="card-text" style="text-overflow: ellipsis; overflow-y: hidden;height: 50px;">
 						{!!$newest_stories[1]->content!!}
 					</p>
 					<div>

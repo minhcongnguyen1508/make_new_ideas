@@ -7,7 +7,7 @@ HEADER
 			<div class="row justify-content-between">
 				<div class="col-md-6 pt-6 pb-6 align-self-center">
 					<h1 class="secondfont mb-3 font-weight-bold">{{$newest_stories[0]->title}}</h1>
-					<p class="mb-3">
+					<p class="mb-3" style="text-overflow: ellipsis; overflow-y: hidden;height: 100px;">
 						{!!$newest_stories[0]->content!!}
 					</p>
 					<a href="{{route('story', $newest_stories[0]->id)}}" class="btn btn-dark">Read More</a>
