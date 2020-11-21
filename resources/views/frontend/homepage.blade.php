@@ -16,7 +16,7 @@ MAIN
 					<h2 class="h4 font-weight-bold">
 					<a class="text-dark" href="{{ route('story',$newest_stories[1]->id) }}">{{$newest_stories[1]->title}}</a>
 					</h2>
-					<p class="card-text">
+					<p class="card-text" style="text-overflow: ellipsis; overflow-y: hidden;height: 50px;">
 						{!!$newest_stories[1]->content!!}
 					</p>
 					<div>
@@ -92,7 +92,7 @@ MAIN
 					<img height="120" src="{!! $story->thumbnail !!}">
 				</div>
 			@endforeach
-			{{ $stories->links() }}
+			
 		</div>
 		<div class="col-md-4 pl-4">
             <h5 class="font-weight-bold spanborder"><span>Popular</span></h5>
@@ -110,6 +110,9 @@ MAIN
 				</li>
 				@endforeach
 			</ol>
+		</div>
+		<div class="col-md-8">
+			{{ $stories->links() }}
 		</div>
 	</div>
 </div>
