@@ -23,7 +23,7 @@ HEADER
 					<p class="mb-3">
 						{{ $story[0]->slug }}
 					</p>
-					<div class="d-flex align-items-center">
+					<div class="d-flex align-items-center">				
 						@if($name[0]->avatar)
 						<img class="rounded-circle" src="{{asset('avatars/' . Auth::user()->avatar)}}" width="70">
 						@else
