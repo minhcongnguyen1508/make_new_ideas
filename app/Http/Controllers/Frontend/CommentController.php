@@ -26,12 +26,12 @@ class CommentController extends Controller
 
     public function countLike($comment_id)
     {
-        return count(LikeComment::where(['comment_id'=>$comment_id, 'stauts'=>1])->get());
+        return count(LikeComment::where(['comment_id'=>$comment_id, 'status'=>1])->get());
     }
 
     public function countUnLike($comment_id)
     {
-        return count(LikeComment::where(['comment_id'=>$comment_id, 'stauts'=>2])->get());
+        return count(LikeComment::where(['comment_id'=>$comment_id, 'status'=>2])->get());
     }
 
     public function like($comment_id)
