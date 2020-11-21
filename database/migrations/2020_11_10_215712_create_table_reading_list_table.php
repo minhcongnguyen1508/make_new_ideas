@@ -13,7 +13,7 @@ class CreateTableReadingListTable extends Migration
      */
     public function up()
     {
-        Schema::create('reading_list', function (Blueprint $table) {
+        Schema::create('reading_lists', function (Blueprint $table) {
             $table->increments('id');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('post_id')->constrained('posts');
@@ -28,6 +28,6 @@ class CreateTableReadingListTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reading_list');
+        Schema::dropIfExists('reading_lists');
     }
 }
