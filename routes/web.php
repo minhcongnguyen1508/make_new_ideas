@@ -62,5 +62,5 @@ Route::get('unsave/{post_id}', 'Frontend\ReadingListController@unsave');
 
 Route::get('remove/{post_id}', 'Frontend\ReadingListController@remove');
 
-
+Route::get('/search', 'Frontend\SearchController@getSearch')->name('search');
 

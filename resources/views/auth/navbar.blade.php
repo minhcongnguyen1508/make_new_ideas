@@ -1,9 +1,9 @@
 <nav class="topnav navbar navbar-expand-lg navbar-light bg-white fixed-top">
 	<div class="container">
 		<a class="navbar-brand" href="{{ route('homepage') }}"><strong>Medium</strong></a>
-		<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+		<!-- <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
-		</button>
+		</button> -->
 
 		<div class="navbar-collapse collapse" style="">
 			<ul class="navbar-nav ml-auto d-flex align-items-center">
@@ -19,9 +19,15 @@
 							<!-- <form class="form-inline">
 								<input class="form-control form-control-sm"  style="border: none;" type="text" placeholder="Search Medium" aria-label="Search">
 							</form> -->
+							<form action="/search" method="GET">
 							<div class="form-inline">
-								<input class="form-control form-control-sm" id="search" style="border: none;" type="text" placeholder="Search Medium" aria-label="Search">
+								<input class="form-control form-control-sm" id="search" name="key" style="border: none;" type="text" placeholder="Search Medium" aria-label="Search">
+							
+								<button class="navbar-toggler collapsed" type="submit" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+									<span class="navbar-toggler-icon"></span>
+								</button>
 							</div>
+							</form>
 
 							<div class="suggestions" stype="background:#0000">
 
