@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableReadinglistsTable extends Migration
+class CreateTableReadingListsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTableReadinglistsTable extends Migration
      */
     public function up()
     {
-        Schema::create('table_readinglists', function (Blueprint $table) {
+        Schema::create('reading_lists', function (Blueprint $table) {
             $table->increments('id');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('post_id')->constrained('posts');
@@ -28,6 +28,6 @@ class CreateTableReadinglistsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_readinglists');
+        Schema::dropIfExists('reading_lists');
     }
 }
