@@ -14,7 +14,7 @@ MAIN
                 <div style="background-image: url({{$newest_stories[2]->thumbnail}}); height: 150px;    background-size: cover;    background-repeat: no-repeat;"></div>
 				<div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
 					<h2 class="h4 font-weight-bold">
-					<a class="text-dark" href="{{ route('story',$newest_stories[1]->id) }}">{{$newest_stories[1]->title}}</a>
+						<a class="text-dark" href="{{ route('story',$newest_stories[1]->id) }}">{{$newest_stories[1]->title}}</a>
 					</h2>
 					<p class="card-text" style="text-overflow: ellipsis; overflow-y: hidden;height: 50px;">
 						{!!$newest_stories[1]->content!!}

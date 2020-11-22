@@ -29,7 +29,7 @@ def similarity(sentences, query):
     query_embeddings = model.encode(queries)
 
     # Find the closest 3 sentences of the corpus for each query sentence based on cosine similarity
-    number_top_matches =  6 #@param {type: "number"}
+    number_top_matches = 5 #@param {type: "number"}
 
     # print("Semantic Search Results")
 
@@ -97,7 +97,7 @@ class ConnectDB():
         if (self.connection.is_connected()):
             cursor = self.connection.cursor()
             try:
-                cursor.execute("""INSERT into suggestion (post_id,suggest_id,created_at,updated_at) values(%s,%s,%s,%s)""",(test1, test2, timestamp, timestamp))
+                cursor.execute("""INSERT into suggestion (suggest_id,post_id,created_at,updated_at) values(%s,%s,%s,%s)""",(test1, test2, timestamp, timestamp))
                 self.connection.commit()
             except Exception as e:
                 print(e)
@@ -105,12 +105,12 @@ class ConnectDB():
         else:
             print("MySQL is not connection")
 
-    def delete_info_suggestion(self):
+    def delete_info_suggestion(self, post_id):
         if (self.connection.is_connected()):
             cursor = self.connection.cursor()
             try:
-                sql_Delete_query = """Delete from suggestion;
-                                        ALTER TABLE suggestion AUTO_INCREMENT = 1"""
+                sql_Delete_query = """Delete from suggestion WHERE suggest_id=%s;"""%(post_id)
+                print(sql_Delete_query)
                 cursor.execute(sql_Delete_query)
                 self.connection.commit()
             except Exception as e:
@@ -120,13 +120,13 @@ class ConnectDB():
 
 
 class HelloWorld(Resource):
-    def get(self):
+    def get(self, post_id):
         # connentDB()
         dataBase = ConnectDB('localhost', 'medium1', 'medium1', 'scret123')
         sent = dataBase.get_data_from_table("select title from posts")
         # print(sent)
         # Similarity 
-        query_sent = sent[3]
+        query_sent = sent[post_id-1]
 
         sentenc = similarity(sent, query_sent)
         sql_query = """select id from posts where title='%s';"""%(query_sent)
@@ -144,13 +144,14 @@ class HelloWorld(Resource):
         except Exception as e:
             print(e)
 
-        # dataBase.delete_info_suggestion()
+        dataBase.delete_info_suggestion(post_id)
         for i in list_sg:
             dataBase.insert_into_suggestion(id_query[0], i)
-        dataBase.conn_close()
-        return {"data": "Hello world!"}
 
-api.add_resource(HelloWorld, "/helloworld")
+        dataBase.conn_close()
+        return {"data": "Success!"}
+
+api.add_resource(HelloWorld, "/helloworld/<int:post_id>")
 
 if __name__ == "__main__":
     app.run(debug=True)

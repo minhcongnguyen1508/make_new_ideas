@@ -15,8 +15,8 @@ class CreateSuggestionTable extends Migration
     {
         Schema::create('suggestion', function (Blueprint $table) {
             $table->id();
-            $table->integer('post_id');
             $table->integer('suggest_id');
+            $table->foreignId('post_id');
             $table->timestamps();
         });
     }
