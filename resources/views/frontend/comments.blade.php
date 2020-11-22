@@ -76,8 +76,12 @@
                 <p>{{$cmt->content}}</p>
                 <div class="pad-ver">
                   <div class="btn-group">
-                    <a class="btn btn-sm btn-default btn-hover-success active" href="#"><i class="fa fa-thumbs-up"></i></a>
-                    <a class="btn btn-sm btn-default btn-hover-danger" href="#"><i class="fa fa-thumbs-down"></i></a>
+                    <a cmt_id="{{$cmt->id}}" data-type="like_cmt" class="like btn btn-sm btn-default active">
+                      <i class="icon fa fa-thumbs-up"></i>
+                    </a>
+                    <a cmt_id="{{$cmt->id}}" data-type="unlike_cmt" class="unlike btn btn-sm btn-default">
+                      <i class="icon fa fa-thumbs-down"></i>
+                    </a>
                   </div>
                   <button type="submit" class="btn btn-sm btn-default btn-hover-primary"> Comments </button>
                 </div>
@@ -92,13 +96,104 @@
 </div>
 
 <script>
+  function countLike() {
+    $.each($('a.like'), function() {
+      var cmt_id = $(this).attr('cmt_id');
+      var like = this;
+
+      $.ajax({
+        url: "./count_like_cmt/" + cmt_id,
+        success: function(data) {
+          $(like).children('i').html(" " + data);
+        },
+        error: function(msg) {
+          console.log(msg)
+        }
+      });
+
+      $.ajax({
+        url: "./get_status_like_cmt/" + cmt_id,
+        success: function(data) {
+          if (data == 'liked') {
+            $(like).css("color", "#025d45")
+          } else {
+            $(like).css("color", "grey")
+          }
+        },
+        error: function(msg) {}
+      });
+    });
+
+    $.each($('a.unlike'), function() {
+      var cmt_id = $(this).attr('cmt_id');
+      var unlike = this;
+
+      $.ajax({
+        url: "./count_unlike_cmt/" + cmt_id,
+        success: function(data) {
+          $(unlike).children('i').html(" " + data);
+        },
+        error: function(msg) {}
+      });
+
+      $.ajax({
+        url: "./get_status_like_cmt/" + cmt_id,
+        success: function(data) {
+          if (data == 'unliked') {
+            $(unlike).css("color", "#025d45")
+          } else {
+            $(unlike).css("color", "grey")
+          }
+        },
+        error: function(msg) {}
+      });
+    });
+  }
+
   $(document).ready(function() {
     $('textarea#comment').on('keyup', function() {
-      if ($('#form-submit textarea#comment').val() == '') {
+      if ($('textarea#comment').val() == '') {
         $("#cmt-submit").attr("disabled", true);
       } else {
         $("#cmt-submit").attr("disabled", false);
       }
-    })
+    });
+    countLike()
+  });
+
+  $('body').on('click', 'a.like', function() {
+    var cmt_id = $(this).attr('cmt_id');
+    var url = './like_cmt/' + cmt_id;
+    var like = this;
+
+    $.ajax({
+      url: url,
+      context: document.body,
+      method: 'POST',
+      success: function(data) {
+        $(like).css("color", "#025d45")
+        $(like).siblings().css('color', 'grey')
+        countLike()
+      },
+      error: function(msg) {}
+    });
+  });
+
+  $('body').on('click', 'a.unlike', function() {
+    var cmt_id = $(this).attr('cmt_id');
+    var url = './unlike_cmt/' + cmt_id;
+    var unlike = this;
+
+    $.ajax({
+      url: url,
+      context: document.body,
+      method: 'POST',
+      success: function(data) {
+        $(unlike).css("color", "#025d45")
+        $(unlike).siblings().css('color', 'grey')
+        countLike()
+      },
+      error: function(msg) {}
+    });
   });
 </script>
