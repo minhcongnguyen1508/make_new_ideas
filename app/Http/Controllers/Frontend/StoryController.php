@@ -73,10 +73,10 @@ class StoryController extends Controller
                         'slug' => str_replace(" ","-",strtolower($data['title'])),
                         'content' => $data['content'],
                         'category_id' => $data['category'],
-                        'thumbnail' => '/public/images/'.$imageName,
+                        'thumbnail' => url('images/'.$imageName),
                         'user_id' => Auth::id()
                     ]);
-        $data_notifi_title = "Writer ".Auth::user()->username." vừa mới có bài viết mới!";
+        $data_notifi_title = "Writer ".Auth::user()->username." vừa có bài viết mới!";
         $data_notifi_link = "story/".$id_new_post->id;
         $followers = followers_of_current_user();
         foreach ($followers as $key => $follower) {
