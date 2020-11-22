@@ -14,11 +14,13 @@ class CategoryTableSeeder extends Seeder
     public function run()
     {
         $categories = [
-            'Thể thao',
-            'Thời trang',
-            'Đời sống',
-            'Công nghệ',
-            'Xe cộ',
+            'Sports',
+            'Art',
+            'Technology',
+            'Life',
+            'Psychology',
+            'Medicine',
+            'Philosophy'
         ];
 
         foreach ($categories as $category) {
