@@ -93,3 +93,11 @@ button:focus {
     font-weight: 400;
     margin-top: 3px;
 }
+
+.story-time {
+    margin-right: 10px;
+}
+
+.story-image {
+    padding-top: 118px;
+}

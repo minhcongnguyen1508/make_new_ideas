@@ -29,14 +29,14 @@ HEADER
 						@else
 						<img class="rounded-circle" src="{{asset('avatars/avatar_none.png')}}" width="70">
 						@endif
-						<small class="ml-2">{{ $name[0]->username}} <span class="text-muted d-block">A few hours ago &middot; 5 min. read</span>
+						<small class="ml-2 story-time">{{ $name[0]->username}} <span class="text-muted d-block">{{$story[0]->created_at}} </span>
 						</small>
 
 						@if ($name[0]->user_id != current_user()->id)
-							<a data-href="{{url('/follow/'.$name[0]->user_id)}}" data-writer="{{$name[0]->user_id}}" id="follow" style="margin-left: 10px" class="btn btn-outline-primary">
+							<a data-href="{{url('/follow/'.$name[0]->user_id)}}" data-writer="{{$name[0]->user_id}}" id="follow" class="btn btn-outline-primary">
 								Follow
 							</a>
-							<a data-href="{{url('/unfollow/'.$name[0]->user_id)}}" id="unfollow" class="btn btn-outline-danger" style="margin-left: 10px" >
+							<a data-href="{{url('/unfollow/'.$name[0]->user_id)}}" id="unfollow" class="btn btn-outline-danger">
 								Unfollow
 							</a>
 						@endif
@@ -52,7 +52,7 @@ HEADER
 
 				</div>
 				<div class="col-md-6 pr-0">
-					<img src="/assets/img/demo/1.jpg">
+					<img class="story-image" src="{{$story[0]->thumbnail}}" alt="image here" stype="padding-top:40px">
 				</div>
 			</div>
 		</div>
