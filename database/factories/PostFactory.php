@@ -9,7 +9,8 @@ use App\Models\Role;
 use Illuminate\Support\Str;
 
 $factory->define(Post::class, function (Faker $faker) {
-    $title = $faker->sentence($nbWords = 6, $variableNbWords = true);
+    // $title = $faker->sentence($nbWords = 6, $variableNbWords = true);
+    $title = ucwords($faker->catchPhrase .' '.$faker->bs);
 
     return [
         'category_id' => Category::all()->random()->id,
