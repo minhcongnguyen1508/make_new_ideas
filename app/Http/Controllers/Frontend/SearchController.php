@@ -12,8 +12,8 @@ class SearchController extends Controller
     function getSearch(Request $req) {
 
         $search = $req->get('key');
-        $post = DB::table('posts')
-                ->join('users', 'posts.user_id', '=', 'users.id')
+        $post = DB::table('users')
+                ->join('posts', 'posts.user_id', '=', 'users.id')
                 ->where('title', 'like', '%'.$search.'%')->get();
 
         return view('frontend.searchpage')->with('post', $post);
