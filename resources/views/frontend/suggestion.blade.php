@@ -8,14 +8,14 @@
 				</div>
 				<div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
 					<h2 class="h4 font-weight-bold">
-						<a class="text-dark" href="#">Brain Stimulation Relieves Depression Symptoms</a>
+						<a class="text-dark" href="{{ route('story',$newest_stories[0]->id) }}">{{$newest_stories[0]->title}}</a>
 					</h2>
-					<p class="card-text">
-						Researchers have found an effective target in the brain for electrical stimulation to improve mood in people suffering from depression.
+					<p class="card-text" style="text-overflow: ellipsis; overflow-y: hidden;height: 50px;">
+						{!!$newest_stories[0]->content!!}
 					</p>
 					<div>
-						<small class="d-block"><a class="text-muted" href="./author.html">Favid Rick</a></small>
-						<small class="text-muted">Dec 12 · 5 min read</small>
+						<small class="d-block"><a class="text-muted" href="./author.html">{!!$newest_stories[0]->username!!}</a></small>
+						<small class="text-muted">{{$newest_stories[0]->created_at}} &middot; 5 min read</small>
 					</div>
 				</div>
 			</div>
@@ -26,36 +26,36 @@
 					<img height="80" src="./assets/img/demo/blog4.jpg">
 					<div class="pl-3">
 						<h2 class="mb-2 h6 font-weight-bold">
-							<a class="text-dark" href="{{ route('story',1) }}">Nasa's IceSat space laser makes height maps of Earth</a>
+							<a class="text-dark" href="{{ route('story',$newest_stories[1]->id) }}">{{$newest_stories[1]->title}}</a>
 						</h2>
 						<div class="card-text text-muted small">
-							Jake Bittle in LOVE/HATE
+							{{$newest_stories[1]->username}}
 						</div>
-						<small class="text-muted">Dec 12 · 5 min read</small>
+						<small class="text-muted">{{$newest_stories[1]->created_at}} &middot; 5 min read</small>
 					</div>
 				</div>
 				<div class="mb-3 d-flex align-items-center">
 					<img height="80" src="./assets/img/demo/blog5.jpg">
 					<div class="pl-3">
 						<h2 class="mb-2 h6 font-weight-bold">
-							<a class="text-dark" href="{{ route('story',1) }}">Underwater museum brings hope to Lake Titicaca</a>
+							<a class="text-dark" href="{{ route('story',$newest_stories[2]->id) }}">{{$newest_stories[2]->title}}</a>
 						</h2>
 						<div class="card-text text-muted small">
-							Jake Bittle in LOVE/HATE
+							{{$newest_stories[2]->username}}
 						</div>
-						<small class="text-muted">Dec 12 · 5 min read</small>
+						<small class="text-muted">{{$newest_stories[2]->created_at}} &middot; 5 min read</small>
 					</div>
 				</div>
 				<div class="mb-3 d-flex align-items-center">
 					<img height="80" src="./assets/img/demo/blog6.jpg">
 					<div class="pl-3">
 						<h2 class="mb-2 h6 font-weight-bold">
-							<a class="text-dark" href="{{ route('story',1) }}">Sun-skimming probe starts calling home</a>
+							<a class="text-dark" href="{{ route('story',$newest_stories[3]->id) }}">{{$newest_stories[3]->title}}</a>
 						</h2>
 						<div class="card-text text-muted small">
-							Jake Bittle in LOVE/HATE
+							{{$newest_stories[3]->username}}
 						</div>
-						<small class="text-muted">Dec 12 · 5 min read</small>
+						<small class="text-muted">{{$newest_stories[3]->created_at}} &middot; 5 min read</small>
 					</div>
 				</div>
 			</div>

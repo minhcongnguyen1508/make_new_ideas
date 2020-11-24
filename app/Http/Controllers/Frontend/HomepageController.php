@@ -26,7 +26,7 @@ class HomepageController extends Controller
                                         $the_most_stories_ids[2]->post_id,
                                         $the_most_stories_ids[3]->post_id])
                         ->get();
-    $newest_stories = DB::table('users')->join('posts', 'users.id','=', 'posts.user_id')->orderByRaw('posts.created_at DESC')->limit(5)->get();
+    $newest_stories = DB::table('users')->join('posts', 'users.id','=', 'posts.user_id')->orderByRaw('posts.created_at ASC')->limit(5)->get();
     return view('frontend.homepage', ['newest_stories'=> $newest_stories,'the_most_stories'=>$the_most_stories,'stories'=>$user_stories,'category' => $category,'notifications'=> $notifications]);
   }
 }

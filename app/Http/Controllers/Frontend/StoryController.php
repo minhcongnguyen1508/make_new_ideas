@@ -29,7 +29,13 @@ class StoryController extends Controller
     
         $comments = Comments::where('post_id', $req->id)->get();
         $notifications = DB::table('notifications')->where('notifiable_id',Auth::id())->get();
-        return view('frontend.story')->with(['story'=> $story, 'name' => $name, 'comments' => $comments,'notifications'=> $notifications]);
+        
+        // $newest_stories = DB::table('users')->join('posts', 'users.id','=', 'posts.user_id')->orderByRaw('posts.created_at DESC')->limit(5)->get();
+        $newest_stories = DB::table('posts')->join('users', 'posts.user_id','=', 'users.id')->join('suggestion', 'posts.id','=', 'suggestion.post_id')->where('suggest_id', $req->id)->get();
+        $newest_stories = $this->suggest($newest_stories);
+        // dd($newest_stories);
+
+        return view('frontend.story')->with(['story'=> $story, 'name' => $name, 'comments' => $comments,'notifications'=> $notifications, 'newest_stories'=>$newest_stories]);
     }
     public function countLike($post_id)
     {
@@ -57,6 +63,14 @@ class StoryController extends Controller
         $categories = DB::table('categories')->get();
         return view('frontend.create-story',['categories' => $categories]);
     }
+
+    public function suggest($newest_stories){
+        if(empty($newest_stories[0])){
+            $newest_stories = DB::table('users')->join('posts', 'users.id','=', 'posts.user_id')->orderByRaw('posts.created_at ASC')->limit(5)->get();
+        }
+        return $newest_stories;
+    }
+
     public function createStory(Request $request)
     {
         request()->validate([
@@ -73,10 +87,10 @@ class StoryController extends Controller
                         'slug' => str_replace(" ","-",strtolower($data['title'])),
                         'content' => $data['content'],
                         'category_id' => $data['category'],
-                        'thumbnail' => '/public/images/'.$imageName,
+                        'thumbnail' => url('images/'.$imageName),
                         'user_id' => Auth::id()
                     ]);
-        $data_notifi_title = "Writer ".Auth::user()->username." vừa mới có bài viết mới!";
+        $data_notifi_title = "Writer ".Auth::user()->username." vừa có bài viết mới!";
         $data_notifi_link = "story/".$id_new_post->id;
         $followers = followers_of_current_user();
         foreach ($followers as $key => $follower) {
