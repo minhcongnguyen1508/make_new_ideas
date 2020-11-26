@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', 'Controller@index');
 Route::get('/', 'Frontend\HomepageController@index')->name('homepage');
 
-Route::get('/story/{id}', 'Frontend\StoryController@index')->name('story');
+Route::get('/story/{id}', 'Frontend\StoryController@index')->name('story')->middleware('auth');
 
 Route::post('/comment/{id}', 'Frontend\CommentController@store')->name('comment.create');
 Route::post('like_cmt/{comment_id}', 'Frontend\CommentController@like');
