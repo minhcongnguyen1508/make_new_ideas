@@ -4,11 +4,11 @@
 	<div class="row">
 		<div class="col-lg-6">
 			<div class="card border-0 mb-4 box-shadow h-xl-300">
-				<div style="background-image: url(./assets/img/demo/3.jpg); height: 150px; background-size: cover; background-repeat: no-repeat;">
+				<div style="background-image: url({{$newest_stories[0]->thumbnail}}); height: 150px; background-size: cover; background-repeat: no-repeat;">
 				</div>
 				<div class="card-body px-0 pb-0 d-flex flex-column align-items-start">
 					<h2 class="h4 font-weight-bold">
-						<a class="text-dark" href="{{ route('story',$newest_stories[0]->id) }}">{{$newest_stories[0]->title}}</a>
+						<a class="text-dark" href="{{ route('story',$newest_stories[0]->post_id) }}">{{$newest_stories[0]->title}}</a>
 					</h2>
 					<p class="card-text" style="text-overflow: ellipsis; overflow-y: hidden;height: 50px;">
 						{!!$newest_stories[0]->content!!}
@@ -23,10 +23,10 @@
 		<div class="col-lg-6">
 			<div class="flex-md-row mb-4 box-shadow h-xl-300">
 				<div class="mb-3 d-flex align-items-center">
-					<img height="80" src="./assets/img/demo/blog4.jpg">
+					<img height="80" src="{{$newest_stories[1]->thumbnail}}">
 					<div class="pl-3">
 						<h2 class="mb-2 h6 font-weight-bold">
-							<a class="text-dark" href="{{ route('story',$newest_stories[1]->id) }}">{{$newest_stories[1]->title}}</a>
+							<a class="text-dark" href="{{ route('story',$newest_stories[1]->post_id) }}">{{$newest_stories[1]->title}}</a>
 						</h2>
 						<div class="card-text text-muted small">
 							{{$newest_stories[1]->username}}
@@ -35,10 +35,10 @@
 					</div>
 				</div>
 				<div class="mb-3 d-flex align-items-center">
-					<img height="80" src="./assets/img/demo/blog5.jpg">
+					<img height="80" src="{{$newest_stories[2]->thumbnail}}">
 					<div class="pl-3">
 						<h2 class="mb-2 h6 font-weight-bold">
-							<a class="text-dark" href="{{ route('story',$newest_stories[2]->id) }}">{{$newest_stories[2]->title}}</a>
+							<a class="text-dark" href="{{ route('story',$newest_stories[2]->post_id) }}">{{$newest_stories[2]->title}}</a>
 						</h2>
 						<div class="card-text text-muted small">
 							{{$newest_stories[2]->username}}
@@ -47,10 +47,10 @@
 					</div>
 				</div>
 				<div class="mb-3 d-flex align-items-center">
-					<img height="80" src="./assets/img/demo/blog6.jpg">
+					<img height="80" src="{{$newest_stories[3]->thumbnail}}">
 					<div class="pl-3">
 						<h2 class="mb-2 h6 font-weight-bold">
-							<a class="text-dark" href="{{ route('story',$newest_stories[3]->id) }}">{{$newest_stories[3]->title}}</a>
+							<a class="text-dark" href="{{ route('story',$newest_stories[3]->post_id) }}">{{$newest_stories[3]->title}}</a>
 						</h2>
 						<div class="card-text text-muted small">
 							{{$newest_stories[3]->username}}

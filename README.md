@@ -74,6 +74,7 @@ In order to ensure that the Laravel community is welcoming to all, please review
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## Tutorials
+
 Step1: git clone https://github.com/minhcongnguyen1508/make_ideas
 
 Step2: cd make_ideas
@@ -82,13 +83,17 @@ Step3: composer install
 
 Step4: npm install
 
-Step5: Change file .env
+Step5: Change file .env & (config name DataBase in AIsuggestion/app.py)
 
 Step5: php artisan migrate
 
-Step6: php artisan serve
+Step6: php artisan db:seed --class=DatabaseSeeder
 
-Step7: Chill ...
+Step7: php artisan serve
+
+Step8: Chill ...
+
+Note: Change link ngrok AI api server. If you can't connect AI susggestion, you can change StoreController suggest function.
 
 ## License
 
