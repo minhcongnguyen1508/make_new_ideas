@@ -42,17 +42,18 @@
 
 <div class="container bootdey">
   <div class="col-md-12 bootstrap snippets">
+    <!-- <form id="form-submit" action="{{route('comment.create', ['id' => $story[0]->id])}}" method="POST" enctype="multipart/form-data"> -->
     <form id="form-submit" action="{{route('comment.create', ['id' => $story[0]->id])}}" method="POST" enctype="multipart/form-data">
       {{ csrf_field() }}
       <div class="panel-body">
         <textarea name="content" id="comment" class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
         <div class="mar-top  clearfix">
           <button id="cmt-submit" class="btn btn-sm btn-primary pull-right mar-bottom" type="submit" disabled>
-            <i class="fa fa-pencil fa-fw"></i> Comments
+            Comments
           </button>
-          <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
+          <!-- <a class="btn btn-trans btn-icon fa fa-video-camera add-tooltip" href="#"></a>
           <a class="btn btn-trans btn-icon fa fa-camera add-tooltip" href="#"></a>
-          <a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a>
+          <a class="btn btn-trans btn-icon fa fa-file add-tooltip" href="#"></a> -->
         </div>
       </div>
       <form>
@@ -158,7 +159,7 @@
         $("#cmt-submit").attr("disabled", false);
       }
     });
-    countLike()
+    countLike();
   });
 
   $('body').on('click', 'a.like', function() {
