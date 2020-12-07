@@ -24,7 +24,7 @@ MAIN
     </div>
 
     <div>
-       
+        @if($story != null)
         <div class="rl-list-posts">
             @foreach($story as $item)
             <div class="rl-item" id="post{{$item->id}}">
@@ -50,13 +50,13 @@ MAIN
                         </svg>
                         <div class="rl-it-remove"><h4 class="remove" id="{{$item->post_id}}">Remove</h4></div>
                     </button>
-                    
                 </div>
             </div>
 
             
             @endforeach
         </div>
+        @endif
     </div>
     
 </div>
