@@ -9,28 +9,21 @@
 			<ul class="navbar-nav ml-auto d-flex align-items-center">
 				<li class="nav-item-l-10 dropleft">
 					<div class="nav-item dropleft">
-						<a class="nav-link" href="#" style="color: gray;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-								<path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
-								<path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+						<a class="nav-link" href="#" style="color: gray; overflow: hidden;" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<svg width="1.3em" height="1.3em" style="overflow: hidden;" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" style="overflow: hidden;" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+								<path fill-rule="evenodd" style="overflow: hidden;" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
 							</svg>
 						</a>
-						<div class="dropdown-menu" style="padding-left: 8px; padding-right: 8px;">
-							<!-- <form class="form-inline">
-								<input class="form-control form-control-sm"  style="border: none;" type="text" placeholder="Search Medium" aria-label="Search">
-							</form> -->
-							<form action="/search" method="GET">
-							<div class="form-inline">
-								<input class="form-control form-control-sm" id="search" name="key" style="border: none;" type="text" placeholder="Search Medium" aria-label="Search">
-							
-								<button class="navbar-toggler collapsed" type="submit" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-									<span class="navbar-toggler-icon"></span>
-								</button>
-							</div>
+
+						<div class="dropdown-menu" style="padding-left: 8px; padding-right: 8px; overflow: hidden;">
+							<form action="/search" method="GET" style="overflow: hide !important;"/>
+								<div class="form-inline">
+									<input class="form-control form-control-sm" id="search" name="key" style="border: none;" type="text" placeholder="Search Medium" aria-label="Search">
+								</div>
 							</form>
 
-							<div class="suggestions" stype="background:#0000">
-
+							<div class="suggestions" stype="background:#0000; overflow: hidden;">
 							</div>
 						</div>
 					</div>
@@ -39,7 +32,7 @@
 				@if(Auth::check())
 
 				<li class="show nav-itemm-l-10" style="padding: 12px;">
-					<a class="btn show-notification"  style="color: gray;" >
+					<a class="btn show-notification" style="color: gray;">
 						<svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-bell" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 							<path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2z" />
 							<path fill-rule="evenodd" d="M8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z" />
@@ -94,7 +87,7 @@
 			<div class="container notification-detail">
 				@unless (empty(current_user()->notifications))
 				@foreach (current_user()->notifications as $notification)
-					<div class="row.col-12">
+					<div class="">
 						<a href="{{ $notification->data['link']}}">
 							<h6>{{ $notification->data['title']}}</h6>
 							<i>{{$notification->created_at}}</i>
@@ -140,7 +133,7 @@
 			console.log(data.created_at);
 			$('.count-notification').html("<b>.</b>");
 			$('.notification-detail').prepend(`
-			<div class="row.col-12">
+			<div class="">
 				<a href="${data.link}">
 					<h6>${data.title}</h6>
 					<i>${data.created_at}</i>

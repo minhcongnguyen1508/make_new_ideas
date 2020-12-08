@@ -64,3 +64,5 @@ Route::get('remove/{post_id}', 'Frontend\ReadingListController@remove');
 
 Route::get('/search', 'Frontend\SearchController@getSearch')->name('search');
 
+Route::get('/category/{cate_id}', 'Frontend\CategoryController@index')->name('category');
+

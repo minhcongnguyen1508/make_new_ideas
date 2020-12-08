@@ -17,11 +17,17 @@ class ReadingListController extends Controller
 {
     public function index(){
 
-        $story = DB::table('reading_lists')
+        if(Auth::check()){
+            $id = Auth::user()->id;
+            // if(DB::table('reading_lists')->where('reading_lists.user_id', $id))
+            $story = DB::table('reading_lists')
                     ->join('posts', 'reading_lists.post_id', '=', 'posts.id')
                     ->join('users', 'posts.user_id', '=', 'users.id')
+                    ->where('reading_lists.user_id', $id)
                     ->get();
-                 
+        } else {
+            $story = null;
+        }       
 
         if(Auth::check()){
             return view('frontend.reading-list')->with('story', $story);

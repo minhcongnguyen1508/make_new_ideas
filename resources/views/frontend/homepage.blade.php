@@ -21,7 +21,7 @@ MAIN
 					</p>
 					<div>
 						<small class="d-block"><a class="text-muted" href="./author.html">{!!$newest_stories[1]->username!!}</a></small>
-						<small class="text-muted">{{$newest_stories[1]->created_at}} &middot; 5 min read</small>
+						<small class="text-muted">{{$newest_stories[1]->created_at}}</small>
 					</div>
 				</div>
 			</div>
@@ -37,7 +37,7 @@ MAIN
 						<div class="card-text text-muted small">
 							{{$newest_stories[2]->username}}
 						</div>
-						<small class="text-muted">{{$newest_stories[2]->created_at}} &middot; 5 min read</small>
+						<small class="text-muted">{{$newest_stories[2]->created_at}}</small>
 					</div>
 				</div>
 				<div class="mb-3 d-flex align-items-center">
@@ -49,7 +49,7 @@ MAIN
 						<div class="card-text text-muted small">
 							{{$newest_stories[3]->username}}
 						</div>
-						<small class="text-muted">{{$newest_stories[3]->created_at}} &middot; 5 min read</small>
+						<small class="text-muted">{{$newest_stories[3]->created_at}}</small>
 					</div>
 				</div>
 				<div class="mb-3 d-flex align-items-center">
@@ -61,7 +61,7 @@ MAIN
 						<div class="card-text text-muted small">
 							{{$newest_stories[4]->username}}
 						</div>
-						<small class="text-muted">{{$newest_stories[4]->created_at}} &middot; 5 min read</small>
+						<small class="text-muted">{{$newest_stories[4]->created_at}}</small>
 					</div>
 				</div>
 			</div>
@@ -87,7 +87,7 @@ MAIN
 						<div class="card-text text-muted small">
 							{{$story->username}}
 						</div>
-						<small class="text-muted">{{$story->created_at}} &middot; 5 min read</small>
+						<small class="text-muted">{{$story->created_at}}</small>
 					</div>
 					<img height="120" src="{!! $story->thumbnail !!}">
 				</div>
