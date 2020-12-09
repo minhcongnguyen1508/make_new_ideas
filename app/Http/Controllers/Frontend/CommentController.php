@@ -20,7 +20,7 @@ class CommentController extends Controller
         $comment->status = 1;
 
         $comment->save();
-    
+
         return redirect()->back();
     }
 
