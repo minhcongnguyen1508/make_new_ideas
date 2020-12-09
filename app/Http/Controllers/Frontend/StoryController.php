@@ -38,20 +38,24 @@ class StoryController extends Controller
 
         return view('frontend.story')->with(['story'=> $story, 'name' => $name, 'comments' => $comments,'notifications'=> $notifications, 'newest_stories'=>$newest_stories]);
     }
+
     public function countLike($post_id)
     {
         return count(DB::table('likes')->where('post_id',$post_id)->get());
     }
+
     public function like($post_id)
     {
         Like::create(['user_id'=>Auth::id(), 'post_id' => $post_id]);
         return count(DB::table('likes')->where('post_id',$post_id)->get());
     }
+    
     public function unLike($post_id)
     {
         DB::table('likes')->where(['post_id'=>$post_id,'user_id'=>Auth::id()])->delete();
         return count(DB::table('likes')->where('post_id',$post_id)->get());
     }
+
     public function statusLike($post_id)
     {
         if(count(DB::table('likes')->where(['post_id'=>$post_id,'user_id'=>Auth::id()])->get()) >= 1){
@@ -71,6 +75,7 @@ class StoryController extends Controller
             exec("python ../AIsuggestion/app.py ".$req);
         }
     }
+
     public function checkEmpty($newest_stories, $req){
         // If you can't connect AI susggestion, you can comment code above & uncomment code below.
         if(empty($newest_stories[0])){

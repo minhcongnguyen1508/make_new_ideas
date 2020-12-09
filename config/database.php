@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_DEFAULT','mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -33,14 +33,12 @@ return [
     |
     */
 
-    'connections' => [
-
-        'sqlite' => [
-            'driver' => 'sqlite',
-            'url' => env('DATABASE_URL'),
-            'database' => env('DB_DATABASE', database_path('database.sqlite')),
-            'prefix' => '',
-            'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
+        'connections' => [
+        // cấu hình data test cho sqlite
+           'sqlite' => [
+               'driver'   => 'sqlite',
+               'database' => ':memory:',
+               'prefix'   => '',
         ],
 
         'mysql' => [
@@ -52,11 +50,11 @@ return [
             'username' => env('DB_USERNAME', 'forge'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
-            'charset' => 'utf8mb4',
-            'collation' => 'utf8mb4_unicode_ci',
+            'charset'   => 'utf8',
+		    'collation' => 'utf8_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
-            'strict' => true,
+            'strict' => false,
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
@@ -89,6 +87,19 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
+        ],
+
+        //cấu hình kết nối data test cho
+        'mysql_test' => [
+            'driver'    => 'mysql',
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'database'  => env('DB_DATABASE_TEST', 'forge'),
+            'username'  => env('DB_USERNAME_TEST', 'forge'),
+            'password'  => env('DB_PASSWORD_TEST', ''),
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+            'strict'    => false,
         ],
 
     ],
