@@ -6,9 +6,11 @@ import pickle
 import numpy as np
 from src.NeuralNetwork import DeepNeuralNetwork
 from src.PreprocessText import read_data, get_label, confus_save
+from flask_cors import CORS
 
 app = Flask(__name__)
-api = Api(app)
+# api = Api(app)
+CORS(app)
 
 def similarity(sentences, query):
     from sentence_transformers import SentenceTransformer
@@ -116,5 +118,5 @@ def suggest_category():
             }
 
 if __name__ == "__main__":
-    app.run(port=3000 ,debug=True)
+    app.run(port=12345 ,debug=True)
 
