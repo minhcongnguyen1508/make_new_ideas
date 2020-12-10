@@ -43,10 +43,12 @@
 <div class="container bootdey">
   <div class="col-md-12 bootstrap snippets">
     <!-- <form id="form-submit" action="{{route('comment.create', ['id' => $story[0]->id])}}" method="POST" enctype="multipart/form-data"> -->
-    <form id="form-submit" action="{{route('comment.create', ['id' => $story[0]->id])}}" method="POST" enctype="multipart/form-data">
+    <form id="form-submit" data-action="{{route('comment.create', ['id' => $story[0]->id])}}"
+      action="javascript:void(0)" method="POST" enctype="multipart/form-data">
       {{ csrf_field() }}
       <div class="panel-body">
-        <textarea name="content" id="comment" class="form-control" rows="2" placeholder="What are you thinking?"></textarea>
+        <textarea name="content" id="comment" class="form-control" rows="2"
+          placeholder="What are you thinking?"></textarea>
         <div class="mar-top  clearfix">
           <button id="cmt-submit" class="btn btn-sm btn-primary pull-right mar-bottom" type="submit" disabled>
             Comments
@@ -61,17 +63,20 @@
           <!-- Newsfeed Content -->
           <!--===================================================-->
           <div class="media-block">
-            <div class="media-block">
+            <div class="media-block show-cmts">
               @foreach($comments as $cmt)
 
               @if($cmt->user->avatar)
-              <a class="media-left" href="#"><img class="rounded-circle" src="{{asset('avatars/' . $cmt->user->avatar)}}" width="50"></a>
+              <a class="media-left" href="#"><img class="rounded-circle"
+                  src="{{asset('avatars/' . $cmt->user->avatar)}}" width="50"></a>
               @else
-              <a class="media-left" href="#"><img class="rounded-circle" src="{{asset('avatars/avatar_none.png')}}" width="50"></a>
+              <a class="media-left" href="#"><img class="rounded-circle" src="{{asset('avatars/avatar_none.png')}}"
+                  width="50"></a>
               @endif
               <div class="media-body">
                 <div class="mar-btm">
-                  <small class=""> <a href="#">{{$cmt->user->username}}</a> <span class="text-muted d-block">{{$cmt->created_at}}</span>
+                  <small class=""> <a href="#">{{$cmt->user->username}}</a> <span
+                      class="text-muted d-block">{{$cmt->created_at}}</span>
                   </small>
                 </div>
                 <p>{{$cmt->content}}</p>
@@ -95,7 +100,55 @@
         </div>
   </div>
 </div>
+<script>
+var comment_url = $("#form-submit").data('action')
 
+if ($("#comment").length > 0) {
+    $('#form-submit').submit(function() {
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+      $('#cmt-submit').html('Please Wait...');
+      $("#cmt-submit"). attr("disabled", true);
+      console.log($('#form-submit').serialize())
+      $.ajax({
+        url: comment_url,
+        type: "POST",
+        data: $('#form-submit').serialize(),
+        success: function( response ) {
+          $('#cmt-submit').html('Comments');
+          $("#cmt-submit"). attr("disabled", false);
+          document.getElementById("form-submit").reset();
+          var new_comment = `<a class="media-left" href="#"><img class="rounded-circle"
+                  src="{{asset('avatars/')}}/${response['user_avatar']}" width="50"></a>
+                  <div class="media-body">
+                <div class="mar-btm">
+                  <small class=""> <a href="#">${response['user_name']}</a> <span
+                      class="text-muted d-block">${response['created_at']}</span>
+                  </small>
+                </div>
+                <p>${response['content']}</p>
+                <div class="pad-ver">
+                  <div class="btn-group">
+                    <a cmt_id="${response['cmt_id']}" data-type="like_cmt" class="like btn btn-sm btn-default active">
+                      <i class="icon fa fa-thumbs-up"></i>
+                    </a>
+                    <a cmt_id="${response['cmt_id']}" data-type="unlike_cmt" class="unlike btn btn-sm btn-default">
+                      <i class="icon fa fa-thumbs-down"></i>
+                    </a>
+                  </div>
+                  <button type="submit" class="btn btn-sm btn-default btn-hover-primary"> Comments </button>
+                </div>
+                <hr>
+              </div>`
+            $('.show-cmts').prepend(new_comment);
+        }
+      });
+    });
+  }
+</script>
 <script>
   function countLike() {
     $.each($('a.like'), function() {
