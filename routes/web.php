@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', 'Controller@index');
 Route::get('/', 'Frontend\HomepageController@index')->name('homepage');
 
-Route::get('/story/{id}', 'Frontend\StoryController@index')->name('story');
+Route::get('/story/{id}', 'Frontend\StoryController@index')->name('story')->middleware('auth');
 
 Route::post('/comment/{id}', 'Frontend\CommentController@store')->name('comment.create');
 Route::post('like_cmt/{comment_id}', 'Frontend\CommentController@like');
@@ -59,8 +59,9 @@ Route::get('/reading-list','Frontend\ReadingListController@index')->name('readin
 Route::get('status-save/{post_id}','Frontend\ReadingListController@statusSave');
 Route::get('save/{post_id}', 'Frontend\ReadingListController@save');
 Route::get('unsave/{post_id}', 'Frontend\ReadingListController@unsave');
-
 Route::get('remove/{post_id}', 'Frontend\ReadingListController@remove');
 
 Route::get('/search', 'Frontend\SearchController@getSearch')->name('search');
+
+Route::get('/category/{cate_id}', 'Frontend\CategoryController@index')->name('category');
 

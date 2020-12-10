@@ -32,25 +32,30 @@ class StoryController extends Controller
         
         // $newest_stories = DB::table('users')->join('posts', 'users.id','=', 'posts.user_id')->orderByRaw('posts.created_at DESC')->limit(5)->get();
         $newest_stories = DB::table('posts')->join('users', 'posts.user_id','=', 'users.id')->join('suggestion', 'posts.id','=', 'suggestion.post_id')->where('suggest_id', $req->id)->get();
-        $newest_stories = $this->suggest($newest_stories);
-        // dd($newest_stories);
+        $this->suggest($newest_stories, $req->id);
+        $newest_stories = DB::table('posts')->join('users', 'posts.user_id','=', 'users.id')->join('suggestion', 'posts.id','=', 'suggestion.post_id')->where('suggest_id', $req->id)->get();
+        $newest_stories = $this->checkEmpty($newest_stories, $req->id);
 
         return view('frontend.story')->with(['story'=> $story, 'name' => $name, 'comments' => $comments,'notifications'=> $notifications, 'newest_stories'=>$newest_stories]);
     }
+
     public function countLike($post_id)
     {
         return count(DB::table('likes')->where('post_id',$post_id)->get());
     }
+
     public function like($post_id)
     {
         Like::create(['user_id'=>Auth::id(), 'post_id' => $post_id]);
         return count(DB::table('likes')->where('post_id',$post_id)->get());
     }
+    
     public function unLike($post_id)
     {
         DB::table('likes')->where(['post_id'=>$post_id,'user_id'=>Auth::id()])->delete();
         return count(DB::table('likes')->where('post_id',$post_id)->get());
     }
+
     public function statusLike($post_id)
     {
         if(count(DB::table('likes')->where(['post_id'=>$post_id,'user_id'=>Auth::id()])->get()) >= 1){
@@ -64,9 +69,20 @@ class StoryController extends Controller
         return view('frontend.create-story',['categories' => $categories]);
     }
 
-    public function suggest($newest_stories){
+    public function suggest($newest_stories, $req){
+        // dd($p_id);
         if(empty($newest_stories[0])){
-            $newest_stories = DB::table('users')->join('posts', 'users.id','=', 'posts.user_id')->orderByRaw('posts.created_at ASC')->limit(5)->get();
+            exec("python ../AIsuggestion/app.py ".$req);
+        }
+    }
+
+    public function checkEmpty($newest_stories, $req){
+        // If you can't connect AI susggestion, you can comment code above & uncomment code below.
+        if(empty($newest_stories[0])){
+            $newest_stories = DB::table('users')->join('posts', 'users.id','=', 'posts.user_id')->orderByRaw('posts.created_at ASC')->limit(4)->get();
+            for ($i = 0; $i<4; $i++) {
+                $newest_stories[$i]->post_id = $newest_stories[$i]->id;
+            }
         }
         return $newest_stories;
     }

@@ -24,7 +24,7 @@ MAIN
     </div>
 
     <div>
-       
+        @if($story != null)
         <div class="rl-list-posts">
             @foreach($story as $item)
             <div class="rl-item" id="post{{$item->id}}">
@@ -38,7 +38,7 @@ MAIN
                     </a>
                 </div>
                 <div >
-                    <button class="item-bt">
+                    <button class="item-bt" dusk="save_button">
                         <svg width="25" height="25" viewBox="0 0 25 25" fill="#757575">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M20.48 7.45H3.46v10.13H16a.47.47 0 1 1 0 .94H3.46c-.54 
                                 0-.99-.42-.99-.94V7.45c0-.52.45-.93 1-.93h17c.55 0 1 .41 1 .93v5.57a.5.5 0 0 1-1 0V7.45zM5.47 
@@ -50,13 +50,13 @@ MAIN
                         </svg>
                         <div class="rl-it-remove"><h4 class="remove" id="{{$item->post_id}}">Remove</h4></div>
                     </button>
-                    
                 </div>
             </div>
 
             
             @endforeach
         </div>
+        @endif
     </div>
     
 </div>
