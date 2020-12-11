@@ -77,15 +77,13 @@
 		</div>
 	</div>
 </nav>
-
-<div hidden = "hidden" id="notification" style="border-radius: 10px; position: fixed; right: 10%; width:20%; border: 1px solid black;z-index: 2000; background-color: white">
-	<div class="container" style="padding-left: 8px; padding-right: 8px; overflow: hidden;">
-		<div class="" style="position: sticky;">
-			<h5 class="text-center" style="margin: 10px">Notification</h5>
+<div hidden = "hidden" id="notification" style="border-radius: 10px;position: fixed; right: 20px; width:23%; border: 1px solid black;z-index: 2000; background-color: white">
+	<div class="container" style="">
+		<div class="row.col-12" style="position: sticky;">
+			<h5 class="text-center">Notification</h5>
 			<hr>
 		</div>
-		
-		<div class="" style="overflow: hidden; height: 300px;">
+		<div class="row.col-12" style="overflow-y: scroll;height: auto;">
 			<div class="container notification-detail">
 				@unless (empty(current_user()->notifications))
 				@foreach (current_user()->notifications as $notification)

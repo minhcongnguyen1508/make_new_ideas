@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Comments;
+use App\Models\User;
 use App\Models\LikeComment;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,7 +22,17 @@ class CommentController extends Controller
 
         $comment->save();
 
-        return redirect()->back();
+        // return redirect()->back();
+        $user = User::find($comment->user_id);
+        $res_data = [
+            "user_avatar" => $user->avatar,
+            "user_name"=> $user->username,
+            "created_at" => $comment->created_at->toDateTimeString(),
+            "content" => $comment->content,
+            "cmt_id" => $comment->id
+        ];
+
+        return $res_data;
     }
 
     public function countLike($comment_id)
