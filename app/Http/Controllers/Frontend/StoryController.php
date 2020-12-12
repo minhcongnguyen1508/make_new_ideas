@@ -23,6 +23,12 @@ class StoryController extends Controller
             ->where('id', $req->id)
             ->get();
 
+        $category = DB::table('posts')
+            ->join('categories', 'posts.category_id', '=', 'categories.id')
+            ->where('posts.id', $req->id)
+            ->get();
+            
+
         $name = DB::table('users')->leftjoin('posts', 'users.id','=', 'posts.user_id')
             ->where('posts.id', $req->id)
             ->get();
@@ -36,7 +42,7 @@ class StoryController extends Controller
         $newest_stories = DB::table('posts')->join('users', 'posts.user_id','=', 'users.id')->join('suggestion', 'posts.id','=', 'suggestion.post_id')->where('suggest_id', $req->id)->get();
         $newest_stories = $this->checkEmpty($newest_stories, $req->id);
 
-        return view('frontend.story')->with(['story'=> $story, 'name' => $name, 'comments' => $comments,'notifications'=> $notifications, 'newest_stories'=>$newest_stories]);
+        return view('frontend.story')->with(['story'=> $story, 'name' => $name, 'comments' => $comments,'notifications'=> $notifications, 'newest_stories'=>$newest_stories, 'category'=>$category]);
     }
 
     public function countLike($post_id)

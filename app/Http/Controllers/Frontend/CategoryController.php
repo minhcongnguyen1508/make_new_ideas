@@ -9,8 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
-    
-    public function index($cate_id){
+    public function index($cate_id, $name){
 
         $category = DB::table('categories')->get();
         $category_name = DB::table('categories')
