@@ -14,13 +14,19 @@ class CategoryTableSeeder extends Seeder
     public function run()
     {
         $categories = [
-            'Sports',
-            'Art',
-            'Technology',
-            'Life',
-            'Psychology',
-            'Medicine',
-            'Philosophy'
+            'sport',
+            'entertainment',
+            'tech',
+            'game',
+            'film',
+            'business',
+            'politics',
+            'person',
+            'country',
+            'company',
+            'buiding',
+            'book',
+            'person'
         ];
 
         foreach ($categories as $category) {
