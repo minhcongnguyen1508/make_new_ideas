@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\ChangePasswordRequest;
 use Illuminate\Http\Request;
 use Validator,Redirect,Response;
 Use App\Models\User;
@@ -83,5 +83,20 @@ class AuthController extends Controller
         Session::flush();
         Auth::logout();
         return Redirect('/');
+    }
+
+    public function editPassword()
+    {
+        return view('frontend.change_password');
+    }
+
+    public function updatePassword(ChangePasswordRequest $request)
+    {
+        $user = User::find(Auth::user()->id);
+        $user->password = $request->new_password;
+        $user->save();
+        // $user = $this->userRepository->update(Auth::user()->id, $data);
+        // User::where('id', Auth::user()->id)->update(['password' => bcrypt($request->new_password)]);
+        return Redirect('/signin');
     }
 }

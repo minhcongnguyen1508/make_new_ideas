@@ -61,4 +61,19 @@ class User extends Model implements AuthenticatableContract
     public function reading_list() {
         return $this->hasMany(ReadingList::class);
     }
+
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password',
+    ];
+
+    public function setPasswordAttribute($password)
+    {
+        $this->attributes['password'] = bcrypt($password);
+    }
 }

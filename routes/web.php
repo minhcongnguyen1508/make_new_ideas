@@ -27,8 +27,9 @@ Route::get('count_unlike_cmt/{comment_id}', 'Frontend\CommentController@countUnL
 Route::get('get_status_like_cmt/{comment_id}', 'Frontend\CommentController@statusLike');
 
 Route::get('/signin', 'Auth\AuthController@signin')->name('signin');
-
 Route::get('/signup', 'Auth\AuthController@signup')->name('signup');
+Route::get('password', 'Auth\AuthController@editPassword')->name('edit.password');
+Route::post('password', 'Auth\AuthController@updatePassword')->name('update.password');
 
 Route::post('post-login', 'Auth\AuthController@postLogin');
 Route::post('post-register', 'Auth\AuthController@postRegister');
