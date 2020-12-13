@@ -95,8 +95,6 @@ class AuthController extends Controller
         $user = User::find(Auth::user()->id);
         $user->password = $request->new_password;
         $user->save();
-        // $user = $this->userRepository->update(Auth::user()->id, $data);
-        // User::where('id', Auth::user()->id)->update(['password' => bcrypt($request->new_password)]);
         return Redirect('/signin');
     }
 }
