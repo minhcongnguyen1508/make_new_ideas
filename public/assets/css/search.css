@@ -102,3 +102,13 @@ button:focus {
 .story-image {
     padding-top: 118px;
 }
+
+.story-cate {
+    margin-top: 30px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.cate-link {
+    margin-left: 20px;
+}

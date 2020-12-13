@@ -5,7 +5,7 @@
     
     @foreach( $category as $item)
     <li class="m-l-200">
-        <a class="nav-link btn" href="{{route('category', $item->id)}}">{{$item->name}}</a>     
+        <a class="nav-link btn" href="{{route('category', [$item->id, $item->name])}}">{{$item->name}}</a>     
       </li>  
     @endforeach
  
