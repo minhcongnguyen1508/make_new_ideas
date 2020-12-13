@@ -25,13 +25,14 @@ MAIN
                     <label for="title">Thumbnail</label>
                     <input id="thumbnail" class="form-control" type="file" name="thumbnail">
                     <label for="title">Category</label>
-                    <select class="form-control" name="category" id="category">
+                    <input class="form-control" id="category_show" readonly >
+                    <select class="form-control" name="category" id="category" hidden >
                         @foreach ($categories as $category)
                             <option data-name="{{$category->name}}" value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
                     <label for="title">Content</label>
-                    <textarea class="form-control" name="content" id="content" cols="30" rows="10"></textarea>
+                    <textarea class="form-control" name="content" id="content" cols="30" rows="10" ></textarea>
                     <a class="form-control btn btn-success " id="get_category">Create</a>
                 </form>
                
@@ -41,12 +42,11 @@ MAIN
 <div hidden="hidden" class="content-to-text"></div>
 @include('layouts/footer')
 <script>
-    $('body').on('click','#get_category',function(){
+    $('body').on('focus','#category_show',function(){
         $('.create_form').submit();
         $('.content-to-text').html($('#content').val())
         console.log($('.content-to-text').text())
         var data_request = {query: $('.content-to-text').text()};
-        $('.create_form').attr('action',$('.create_form').data('action'))
         $.ajax({
         url: "http://4252beec7086.ngrok.io/suggest_category",
         type: "POST",
@@ -55,10 +55,14 @@ MAIN
             if (response['statusCode']=="200 Success!") {
                 var value_response = response['category'];
                 $('#category').val($(`option[data-name="${value_response}"]`).val());
-                $('.create_form').submit();
+                $('#category_show').val(value_response);
             }
         }
         });
+    });
+    $('body').on('click','#get_category',function(){
+        $('.create_form').attr('action',$('.create_form').data('action'))
+        $('.create_form').submit();
     });
 </script>
 <script src={{ url('ckeditor/ckeditor.js') }}></script>
