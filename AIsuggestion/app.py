@@ -4,7 +4,7 @@ from mysql.connector import Error
 import datetime
 import time
 
-url = 'http://cf69fa90f2c9.ngrok.io/'
+url = 'http://4252beec7086.ngrok.io/suggest_article'
 
 class ConnectDB():
     def __init__(self, host, database, user, password):
