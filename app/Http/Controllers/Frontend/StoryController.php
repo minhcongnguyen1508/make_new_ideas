@@ -133,6 +133,6 @@ class StoryController extends Controller
         );
         $pusher->trigger('notification-channel', 'notification-event', ['title'=>$data_notifi_title,'link'=>$data_notifi_link,'writer_id'=>current_user()->id,'created_at'=>explode('.',$id_new_post->created_at)[0]]);
         // event(new NotificationEvent(['title'=>$data_notifi_title,'link'=>$data_notifi_link],current_user()->id));
-        return Redirect::to("/")->withSuccess('You create articles success!');
+        return Redirect::to("/".$data_notifi_link)->withSuccess('You create articles success!');
     }
 }
