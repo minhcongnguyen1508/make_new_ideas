@@ -59,6 +59,7 @@
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item" href="{{route('user.show', ['id' => Auth::user()->id ])}}">Profile</a>
+						<a class="dropdown-item" href="{{route('edit.password')}}">Change Password</a>
 						<a class="dropdown-item" href="{{URL::to('create-story')}}">Create Story</a>
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="{{url('logout')}}">Sign Out</a>
