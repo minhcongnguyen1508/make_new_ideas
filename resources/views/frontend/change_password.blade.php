@@ -35,7 +35,7 @@ HEADER
                 <!-- de truyen du lieu -->
                 {{ csrf_field() }}
                 <div class="form-group">
-                    <label><b>Mật khẩu cũ<span class="obligatory"> (*)</span></b></label>
+                    <label><b>Current password<span class="obligatory"> (*)</span></b></label>
                     <input class="form-control" type="password" name="old_password" />
                 </div>
                 @if (count($errors) > 0)
@@ -43,7 +43,7 @@ HEADER
                 @endif
 
                 <div class="form-group">
-                    <label><b>Mật khẩu mới<span class="obligatory"> (*)</span></b></label>
+                    <label><b>New password<span class="obligatory"> (*)</span></b></label>
                     <input class="form-control" type="password" name="new_password" />
                 </div>
                 @if (count($errors) > 0)
@@ -51,7 +51,7 @@ HEADER
                 @endif
 
                 <div class="form-group">
-                    <label><b>Nhập lại mật khẩu<span class="obligatory"> (*)</span></b></label>
+                    <label><b>Confirm new password<span class="obligatory"> (*)</span></b></label>
                     <input class="form-control" type="password" name="cf_password" />
                 </div>
                 @if (count($errors) > 0)
@@ -67,6 +67,5 @@ HEADER
 <!--------------------------------------
 FOOTER
 --------------------------------------->
-@include('layouts.footer')
 
 @endsection
