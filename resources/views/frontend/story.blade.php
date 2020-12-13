@@ -25,7 +25,7 @@ HEADER
 					</p>
 					<div class="d-flex align-items-center">				
 						@if($name[0]->avatar)
-						<img class="rounded-circle" src="{{asset('avatars/' . Auth::user()->avatar)}}" width="70">
+						<img class="rounded-circle" src="{{asset('avatars/' . $name[0]->avatar)}}" width="70">
 						@else
 						<img class="rounded-circle" src="{{asset('avatars/avatar_none.png')}}" width="70">
 						@endif
